@@ -16,31 +16,16 @@ namespace Drones.Models
         public Shipment[] Shipment { get; set; }
         public int BatteryCharging { get; set; }
         public InterimWarehouse InterimWarehouse { get; set; }
-        public StateDetails[] StateDetails { get; set; }
-
-        public void Select()
+        public List<StateDetails> StateDetails { get; set; }
+        public void Update(StateDetails stateDetails)
         {
-
+            BatteryCharging = stateDetails.BatteryBalance;
+            //StateDetails.Add(stateDetails);
         }
-        public void Update()
+        DataGenerator dg = new DataGenerator();
+        public StateDetails GetState(Drone drone)
         {
-
-        }
-        public void Add()
-        {
-
-        }
-        public void Delete()
-        {
-
-        }
-        public void Edit()
-        {
-
-        }
-        public void GetState()
-        {
-
+            return dg.StateDetailsGenerator(drone);
         }
         public void ChangeDroneState()
         {

@@ -150,6 +150,7 @@
     <Compile Include="Controllers\StoragePointsController.cs" />
     <Compile Include="Controllers\SupervisorsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DataGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

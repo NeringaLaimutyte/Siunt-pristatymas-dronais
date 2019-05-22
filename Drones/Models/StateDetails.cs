@@ -7,6 +7,16 @@ namespace Drones.Models
 {
     public class StateDetails
     {
+        public StateDetails() { }
+        public StateDetails(int id, int batteryBalance, string failureCode, string location, DateTime pollTime, Drone polledMachine_id)
+        {
+            Id = id;
+            BatteryBalance = batteryBalance;
+            FailureCode = failureCode;
+            Location = location;
+            PollTime = pollTime;
+            PolledMachine = polledMachine_id;
+        }
         public int Id { get; set; }
         public Drone PolledMachine { get; set; }
         public int BatteryBalance { get; set; }
@@ -14,9 +24,5 @@ namespace Drones.Models
         public String Location { get; set; }
         public DateTime PollTime { get; set; }
         public DateTime ProphylaxisTime { get; set; }
-        public void GetState()
-        {
-
-        }
     }
 }
