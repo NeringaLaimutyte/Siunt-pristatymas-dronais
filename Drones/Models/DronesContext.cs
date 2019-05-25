@@ -30,7 +30,7 @@ namespace Drones.Models
         public DbSet<Drone> Drones { get; set; }
         public DbSet<Notification> Notification { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<StateDetails> StateDetails { get; set; }
+        public DbSet<Poll> Polls { get; set; }
         public DbSet<Shipment> Shipments { get; set; }
         public DbSet<StoragePoint> StoragePoints { get; set; }
         public DbSet<InterimWarehouse> InterimWarehouses { get; set; }
