@@ -129,12 +129,27 @@ namespace Drones.Controllers
         {
             Drone drone = db.Drones.Find(id);
             db.Drones.Remove(drone);
-            db.SaveChanges();
+            if (drone.Poll != null)
+            {
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewBag.Message = "Drone have poll";
+            }
             return RedirectToAction("Index");
         }
         public ActionResult SendToWarehouse(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Drone drone = db.Drones.Find(id);
+            if (drone == null)
+            {
+                return HttpNotFound();
+            }
             return View(drone);
         }
         // POST: Drones/SendToWarehouse/5 
@@ -149,7 +164,15 @@ namespace Drones.Controllers
         }
         public ActionResult SendToCharge(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Drone drone = db.Drones.Find(id);
+            if (drone == null)
+            {
+                return HttpNotFound();
+            }
             return View(drone);
         }
         // POST: Drones/SendToWarehouse/5 

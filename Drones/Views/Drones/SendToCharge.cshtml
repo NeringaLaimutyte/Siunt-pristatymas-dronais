@@ -4,7 +4,7 @@
     ViewBag.Title = "SendToCharge";
 }
 
-<h2>SendToWarehouse</h2>
+<h2>Send drone to charge</h2>
 
 <h3>Are you sure you want to send this drone to charge?</h3>
 <div>
@@ -37,12 +37,14 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="SendToCharge" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+                <input type="submit" value="SendToCharge" class="btn btn-default" />
+            </div>
         </div>
     }
 </div>
