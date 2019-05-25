@@ -14,6 +14,14 @@ namespace Drones
 {
     public class DataGenerator
     {
+
+
+        public Supervisor SupervisorGenerator(int id)
+        {
+            Supervisor super = new Supervisor(1,"Tomas","123456","tomas@gmail.com","Supervisor","+37060306117", null, null);
+            return super;
+        }
+
         public Poll StateDetailsGenerator(int id)
         {
             Poll sd = new Poll(id, 20, "123", "Kaunas", DateTime.Now, DroneStatus.waitingForTaskInWarehouse, id);
