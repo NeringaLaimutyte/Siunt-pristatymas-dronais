@@ -132,7 +132,36 @@ namespace Drones.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult SendToWarehouse(int? id)
+        {
+            Drone drone = db.Drones.Find(id);
+            return View(drone);
+        }
+        // POST: Drones/SendToWarehouse/5 
+        [HttpPost, ActionName("SendToWarehouse")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendToWarehouseConfirmed(int id)
+        {
+            Drone drone = db.Drones.Find(id);
+            drone.UpdateStatus(DroneStatus.comingBackToWarehouse);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult SendToCharge(int? id)
+        {
+            Drone drone = db.Drones.Find(id);
+            return View(drone);
+        }
+        // POST: Drones/SendToWarehouse/5 
+        [HttpPost, ActionName("SendToCharge")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendToChargeConfirmed(int id)
+        {
+            Drone drone = db.Drones.Find(id);
+            drone.UpdateStatus(DroneStatus.charging);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

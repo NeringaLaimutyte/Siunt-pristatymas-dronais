@@ -22,6 +22,10 @@ namespace Drones.Models
             Status = poll.Status;
             //StateDetails.Add(stateDetails);
         }
+        public void UpdateStatus(DroneStatus status)
+        {
+            Status = status;
+        }
         DataGenerator dg = new DataGenerator();
         public Poll GetState(int id)
         {
