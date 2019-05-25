@@ -282,6 +282,11 @@
     <Content Include="Views\Drones\Main.cshtml" />
     <Content Include="Views\Supervisors\Main.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
+    <Content Include="Views\Poll\Edit.cshtml" />
+    <Content Include="Views\Poll\Create.cshtml" />
+    <Content Include="Views\Poll\Delete.cshtml" />
+    <Content Include="Views\Poll\Details.cshtml" />
+    <Content Include="Views\Drones\SendToWarehouse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

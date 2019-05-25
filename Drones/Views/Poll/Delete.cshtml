@@ -1,0 +1,67 @@
+﻿@model Drones.Models.Poll
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Poll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BatteryBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BatteryBalance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FailureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FailureCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PollTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PollTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Drone_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drone_Id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

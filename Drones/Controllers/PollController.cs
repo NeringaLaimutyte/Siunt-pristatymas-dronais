@@ -47,6 +47,7 @@ namespace Drones.Controllers
             {
                 ViewBag.Message = "Poll completed";
             }
+            RedirectToAction("Index");
         }
         public void Update(Drone drone, Poll state)
         {
@@ -84,6 +85,52 @@ namespace Drones.Controllers
             dbPoll.ProphylaxisTime = poll.ProphylaxisTime;
             dbPoll.Status = poll.Status;
             db.SaveChanges();
+        }
+        // GET: PollTimes/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Poll pollTime = db.Polls.Find(id);
+            if (pollTime == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pollTime);
+        }
+
+        // POST: PollTimes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Poll pollTime = db.Polls.Find(id);
+            db.Polls.Remove(pollTime);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        // GET: PollTimes/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: PollTimes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,IntervalDuration")] Poll pollTime)
+        {
+            if (ModelState.IsValid)
+            {
+                StartPoll();
+                return RedirectToAction("../Drones/Index");
+            }
+
+            return View(pollTime);
         }
     }
 }
