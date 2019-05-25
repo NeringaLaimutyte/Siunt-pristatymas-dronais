@@ -8,8 +8,7 @@ namespace Drones.Models
     public class Drone
     {
         public int Id { get; set; }
-        public String Number { get; set; }
-        public int Model { get; set; }
+        public String Model { get; set; }
         public Boolean NeedToServe { get; set; }
         public DroneStatus Status { get; set; }
         public Supervisor Supervisor { get; set; }

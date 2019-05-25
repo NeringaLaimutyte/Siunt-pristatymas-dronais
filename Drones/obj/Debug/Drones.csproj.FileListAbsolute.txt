@@ -436,3 +436,5 @@ C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\bin\Twilio
 C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\obj\Debug\Drones.Migrations._1.resources
 C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\obj\Debug\Drones.csproj.GenerateResource.cache
 C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\obj\Debug\Drones.Migrations._2.resources
+C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\obj\Debug\Drones.Migrations._3.resources
+C:\Users\Tomas\Desktop\projektavimas\Siunt-pristatymas-dronais\Drones\obj\Debug\Drones.Migrations._4.resources
