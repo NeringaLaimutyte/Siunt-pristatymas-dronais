@@ -23,16 +23,18 @@ namespace Drones.Controllers
         }
         public void StartPoll()
         {
+            DataGenerator dg = new DataGenerator();
+            Supervisor user = dg.SupervisorGenerator(1);
             List<Drone> drones = db.Drones.ToList();
             foreach (var drone in drones)
             {
                 Poll state = drone.GetState(drone.Id);
                 Update(drone, state);
                 Insert(drone, state);
-                //if (supervisorStartedPoll)
-                //{
-                //    RefreshState();
-                //}
+                if(user.CheckUserRole() == "Supervisor")
+                {
+                    RefreshState(drone.Id);
+                }
 
                 AppendToSMSList(drone, state);
             }
@@ -40,10 +42,11 @@ namespace Drones.Controllers
             {
                 //sendSms();
             }
-            //if (supervisorStartedPoll)
-            //{
-            //    Poll completed
-            //}
+
+            if (user.CheckUserRole() == "Supervisor")
+            {
+                ViewBag.Message = "Poll completed";
+            }
         }
         public void Update(Drone drone, Poll state)
         {
