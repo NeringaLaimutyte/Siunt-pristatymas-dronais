@@ -7,12 +7,14 @@
 <h2>Index</h2>
 
 <p>
+    @Html.ActionLink("Poll", "Poll")
     @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("DeleteById", "DeleteById")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Number)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Model)
@@ -21,31 +23,51 @@
             @Html.DisplayNameFor(model => model.NeedToServe)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.BatteryCharging)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterimWarehouse.Address)
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NeedToServe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BatteryCharging)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeedToServe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatteryCharging)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterimWarehouse.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("SendToWarehouse", "SendToWarehouse", new { id = item.Id })
+                @Html.ActionLink("SendToCharge", "SendToCharge", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

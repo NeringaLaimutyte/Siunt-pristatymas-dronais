@@ -25,6 +25,8 @@ namespace Drones.Controllers
             return View(db.Drones.ToList());
         }
 
+
+
         // GET: Drones/Details/5
         public ActionResult Details(int? id)
         {
@@ -45,16 +47,27 @@ namespace Drones.Controllers
         {
             return View();
         }
+         // GET: Drones/DeleteById
+        public ActionResult DeleteById()
+        {
+            return View();
+        }
+
+
+      
+
 
         // POST: Drones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Number,Model,NeedToServe,BatteryCharging")] Drone drone)
+        public ActionResult Create([Bind(Include = "Id,Model")] Drone drone)
         {
             if (ModelState.IsValid)
             {
+                drone.BatteryCharging = 0;
+                drone.Status = DroneStatus.off;
                 db.Drones.Add(drone);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,7 +96,7 @@ namespace Drones.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Number,Model,NeedToServe,BatteryCharging")] Drone drone)
+        public ActionResult Edit([Bind(Include = "Id,Model")] Drone drone)
         {
             if (ModelState.IsValid)
             {
