@@ -11,21 +11,27 @@ namespace Drones.Models
         public String Number { get; set; }
         public int Model { get; set; }
         public Boolean NeedToServe { get; set; }
-        public virtual ICollection<DroneStatus> Status { get; set; }
+        public DroneStatus Status { get; set; }
         public Supervisor Supervisor { get; set; }
         public Shipment[] Shipment { get; set; }
         public int BatteryCharging { get; set; }
         public InterimWarehouse InterimWarehouse { get; set; }
-        public List<StateDetails> StateDetails { get; set; }
-        public void Update(StateDetails stateDetails)
+        public Poll Poll { get; set; }
+        public void Update(Poll poll)
         {
-            BatteryCharging = stateDetails.BatteryBalance;
+            BatteryCharging = poll.BatteryBalance;
+            Status = poll.Status;
             //StateDetails.Add(stateDetails);
         }
         DataGenerator dg = new DataGenerator();
-        public StateDetails GetState(Drone drone)
+        public Poll GetState(int id)
         {
-            return dg.StateDetailsGenerator(drone);
+            return dg.StateDetailsGenerator(id);
+        }
+
+        public Poll RefreshState(Drone drone)
+        {
+            return dg.StateDetailsRefresh(drone);
         }
         public void ChangeDroneState()
         {
