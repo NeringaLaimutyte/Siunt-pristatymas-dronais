@@ -164,6 +164,7 @@
     <Compile Include="Controllers\SupervisorsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataGenerator.cs" />
+    <Compile Include="ErrorMessages.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

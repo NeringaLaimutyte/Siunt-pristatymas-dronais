@@ -25,6 +25,21 @@ namespace Drones.Controllers
             return View(db.Drones.ToList());
         }
 
+        // POST: Drones/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Id,Model")] Drone drone)
+        {
+            PollController pc = new PollController();
+            if (ModelState.IsValid)
+            {
+                pc.StartPoll();
+                ViewBag.Message = "Poll started";
+            }
+            return View(db.Drones.ToList());
+        }
 
 
         // GET: Drones/Details/5

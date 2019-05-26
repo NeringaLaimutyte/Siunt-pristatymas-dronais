@@ -8,7 +8,12 @@
 
 <p>
     @Html.ActionLink("Create new", "Create")
-    @Html.ActionLink("Start poll", "../Poll/Create")
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Start poll" class="btn btn-default" /> @ViewBag.Message
+    }
 </p>
 <table class="table">
     <tr>
