@@ -129,14 +129,7 @@ namespace Drones.Controllers
         {
             Drone drone = db.Drones.Find(id);
             db.Drones.Remove(drone);
-            if (drone.Poll != null)
-            {
-                db.SaveChanges();
-            }
-            else
-            {
-                ViewBag.Message = "Drone have poll";
-            }
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult SendToWarehouse(int? id)

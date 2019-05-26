@@ -20,7 +20,6 @@ namespace Drones.Models
         {
             BatteryCharging = poll.BatteryBalance;
             Status = poll.Status;
-            Poll = poll;
             //StateDetails.Add(stateDetails);
         }
         public void UpdateStatus(DroneStatus status)
