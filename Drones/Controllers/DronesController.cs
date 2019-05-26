@@ -144,8 +144,25 @@ namespace Drones.Controllers
         {
             Drone drone = db.Drones.Find(id);
             db.Drones.Remove(drone);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var polls = db.Polls.ToList();
+            bool droneHasPoll = false;
+            for (int i = 0; i < polls.Count; i++)
+            {
+                if (polls[i].Drone_Id==drone.Id)
+                {
+                    droneHasPoll = true;
+                }
+            }
+            if (!droneHasPoll)
+            {
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Delete = "Drone has poll";
+                return View(drone);
+            }
         }
         public ActionResult SendToWarehouse(int? id)
         {
